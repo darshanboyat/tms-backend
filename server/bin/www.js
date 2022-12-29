@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 
 mongoose.set('strictQuery', true)
-mongoose.connect('mongodb://localhost:27017/TaskManagement',{
+mongoose.connect('mongodb+srv://darshanboyat:3277426269@cluster0.fblbkxh.mongodb.net/?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 },(err)=>{
