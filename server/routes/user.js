@@ -43,6 +43,17 @@ router.post('/signup',(req,res,next)=>{
 })
 
 
+router.get('/data',authenticate.authenticate,(req,res,next)=>{
+    usercontroller.data(req)
+    .then(resp=>{
+        res.send(resp)
+    })
+    .catch(err=>{
+        res.status(500).send(Error)
+    })
+
+})
+
 router.post('/login',(req,res,next)=>{
 
     usercontroller.login(req)

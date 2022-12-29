@@ -51,6 +51,7 @@ class usercontroller{
             user.email = req.body.email
             user.password = encrypted
             user.contactno = req.body.number
+            user.role = req.body.role
          
 
             const info = await user.save()
@@ -63,9 +64,6 @@ class usercontroller{
                 message:"Signup Succesfully",
                 data:info,
                 status:200
-               
-
-
             }
 
         }
@@ -627,6 +625,39 @@ async updateprofile(req){
             console.log(err)
         }
 
+
+    }
+
+
+    async data(req){
+
+
+        try{
+
+            let user = await usermodel.findOne({_id:req.userid})
+            let name = user.name.split(" ")
+            if(user){
+                return {
+                    status:200,
+                    succes:true,
+                    message:"User Detais",
+                    user,
+                    name
+                }
+            }
+
+            else{
+                return{
+                    status:400,
+                    success:false,
+                    message:"No data found"
+                }
+            }
+
+        }
+        catch(err){
+            console.log(err)
+        }
 
     }
 
